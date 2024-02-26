@@ -1,0 +1,6 @@
+ClientHttpRequestFactory is responsible for creating instances of ClientHttpRequest, which are used to execute HTTP requests.
+
+BufferingClientHttpRequestFactory is a wrapper around another ClientHttpRequestFactory.
+It buffers the HTTP request and response content, allowing it to be read multiple times.
+
+setRequestFactory(...): sets the newly created BufferingClientHttpRequestFactory as the request factory for the RestTemplate
