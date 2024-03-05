@@ -1,5 +1,6 @@
 package com.example.orderservice.service;
 
+import com.example.orderservice.dto.OrderCreatedEvent;
 import com.example.orderservice.dto.OrderDto;
 import com.example.orderservice.model.Order;
 import lombok.RequiredArgsConstructor;
@@ -20,6 +21,7 @@ public class OrderService {
     private static final AtomicLong ORDER_ID = new AtomicLong(0);
     private static final Map<Long, Order> ORDERS = new HashMap<>();
 
+//    private final OrderCreatedEventProducer orderCreatedEventProducer;
 
     private final ProductApi productApi;
 
@@ -39,6 +41,14 @@ public class OrderService {
         order.setProductIds(existingProducts.stream().map(ProductDto::getId).toList());
 
         ORDERS.put(order.getId(), order);
+
+//        order.getProductIds().stream().forEach(orderCreatedEventProducer::produceOrderCreatedEvent);
+
+//        OrderCreatedEvent orderCreatedEvent = new OrderCreatedEvent();
+//        orderCreatedEvent.setOrderId(order.getId());
+//        orderCreatedEvent.setProductIds(order.getProductIds());
+//
+//        orderCreatedEventProducer.produceOrderCreatedEvent(orderCreatedEvent);
 
         return OrderDto
                 .builder()

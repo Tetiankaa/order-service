@@ -1,7 +1,10 @@
 package com.example.orderservice.config;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.example.ApiClient;
+import org.example.event.api.IOnProductCreatedConsumerService;
+import org.example.event.model.ProductCreatedPayload;
 import org.example.rest.ProductApi;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
@@ -14,6 +17,7 @@ import org.springframework.web.client.RestTemplate;
 
 @Configuration
 @RequiredArgsConstructor
+@Slf4j
 public class ProductServiceConfig {
 
     private final TokenPropagationHandler tokenPropagationHandler;
@@ -52,5 +56,7 @@ public class ProductServiceConfig {
                 .interceptors(tokenPropagationHandler);
 
     }
+
+
 
 }
